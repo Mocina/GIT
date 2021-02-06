@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="text"> Хочешь учавствовать в опросе? </p>
+    <button onclick="go()"> Да </button>
+    <button onclick="go3()"> Нет </button>
+    <script>
+        let go1 = false
+        let go2 = false
+        function go(){
+            go1 = true
+            if(go1 == go2){
+                document.querySelector("#text").textContent=" - Правильно"
+            }
+        }
+        function go3(){
+            go2 = true
+            if(go2 == go1){
+                document.querySelector("#text").textContent=" - Не правильно"
+            }
+        }
+    </script>
+</body>
+</html>

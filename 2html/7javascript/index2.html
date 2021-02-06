@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="fb()">Нажми 1</button>
+    <button onclick="sb()">Нажми 2</button>
+    <p id="text"> Нажми на обе кнопки </p>
+    <script>
+        let fb1 = false
+        let sb1 = false
+        function fb(){
+            fb1 = true
+            document.querySelector("#text").textContent="Осталось нажать одну кнопку"
+            if(fb1==sb1){
+                document.querySelector("#text").textContent="Молодец!"
+                document.querySelector("#text").style.color="red"
+                document.querySelector("#text").style.fontSize="2em"
+            }
+        }
+        function sb(){
+            sb1 = true
+            document.querySelector("#text").textContent="Осталось нажать одну кнопку"
+            if(sb1==fb1){
+                document.querySelector("#text").textContent="Молодец!"
+                document.querySelector("#text").style.color="red"
+                document.querySelector("#text").style.fontSize="2em"
+            }
+        }
+    </script>
+</body>
+</html>

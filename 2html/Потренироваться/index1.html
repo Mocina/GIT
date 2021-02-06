@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p{
+            background-color: rgb(42, 96, 197);
+            color: white;
+            width: 300px;
+            height: 40px;
+            text-align: center;
+            font-size: 1.3em;
+            padding-top: 15px;
+            border-radius: 10px;
+        }
+        #age{
+            width: 300px;
+            height: 40px;
+            font-size: 1.3em;
+            text-align: center;
+            border-radius: 10px;
+        }
+        #go{
+            background-color: rgb(42, 96, 197);
+            color: white;
+            width: 300px;
+            height: 40px;
+            text-align: center;
+            font-size: 1.3em;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <p>Сколько тебе лет?</p>
+    <input type="text" id="age"><br><br>
+    <button onclick="go()" id="go">Отправить</button>
+    <script>
+        function go(){
+            let name = document.querySelector("p").textContent="Как тебя зовут?"
+        }
+    </script>
+</body>
+</html>

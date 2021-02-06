@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список дел</title>
+  <style>
+      html, body, head {
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            font-size: 2.3vh;
+            transition: 2s;
+            background-image: linear-gradient(to top right, rgb(9, 51, 0), rgb(9, 55, 16), rgb(9, 58, 33), rgb(8, 62, 49), rgb(8, 65, 65), rgb(8, 69, 81), rgb(8, 72, 98), rgb(8, 76, 114), rgb(8, 79, 130), rgb(7, 83, 146), rgb(7, 86, 163), rgb(7, 90, 179));
+            color: white;
+            animation: gradient 1s infinite;
+        }
+        #app {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-align: center;
+        }
+        ul {
+            justify-content: flex-start;
+            margin: 2vh auto;
+            padding: 1vh 2vw;
+            flex-grow: 1;
+            list-style: none;
+            max-height: 60%;
+            overflow-y: scroll;
+            word-wrap: break-word;
+            width: 90%;
+        }
+        li::after {
+            content: "----------------------------------------";
+        }
+        textarea {
+            border-radius: 10px;
+            max-width: 100%;
+            font-size: 2vh;
+        }
+        #footer{
+            margin-bottom: 3vh;
+        }
+        #push{
+            font-size: 2.0em;
+            margin-top: 10px;
+            background-image: linear-gradient(to top right, rgb(9, 51, 0), rgb(9, 55, 16), rgb(9, 58, 33), rgb(8, 62, 49), rgb(8, 65, 65), rgb(8, 69, 81), rgb(8, 72, 98), rgb(8, 76, 114), rgb(8, 79, 130), rgb(7, 83, 146), rgb(7, 86, 163), rgb(7, 90, 179));
+        }
+        #push:hover{
+            animation: gradientButton 0.500s infinite;
+        }
+        @keyframes gradient{
+            0%{
+                background-image: linear-gradient(to top right, rgba(248,26,0,1), rgba(244,129,0,1), rgba(220,244,0,1), rgba(216,244,0,1), rgba(142,244,0,1), rgba(3,244,0,1), rgba(0,244,104,1), rgba(0,244,227,1), rgba(0,171,244,1), rgba(0,52,244,1), rgba(161,0,244,1), rgba(227,0,244,1), rgba(244,0,195,1), rgba(244,0,195,1), rgba(244,0,109,1));
+            }
+            50%{
+                background-image: linear-gradient(to top right, rgb(9, 51, 0), rgb(9, 55, 16), rgb(9, 58, 33), rgb(8, 62, 49), rgb(8, 65, 65), rgb(8, 69, 81), rgb(8, 72, 98), rgb(8, 76, 114), rgb(8, 79, 130), rgb(7, 83, 146), rgb(7, 86, 163), rgb(7, 90, 179));
+            }
+            100%{
+                background-image: linear-gradient(to top right, rgba(248,26,0,1), rgba(244,129,0,1), rgba(220,244,0,1), rgba(216,244,0,1), rgba(142,244,0,1), rgba(3,244,0,1), rgba(0,244,104,1), rgba(0,244,227,1), rgba(0,171,244,1), rgba(0,52,244,1), rgba(161,0,244,1), rgba(227,0,244,1), rgba(244,0,195,1), rgba(244,0,195,1), rgba(244,0,109,1));
+            }
+        }
+        @keyframes gradientButton{
+            0%{
+                background-image: linear-gradient(to top right, rgba(248,26,0,1), rgba(244,129,0,1), rgba(220,244,0,1), rgba(216,244,0,1), rgba(142,244,0,1), rgba(3,244,0,1), rgba(0,244,104,1), rgba(0,244,227,1), rgba(0,171,244,1), rgba(0,52,244,1), rgba(161,0,244,1), rgba(227,0,244,1), rgba(244,0,195,1), rgba(244,0,195,1), rgba(244,0,109,1));
+            }
+            50%{
+                background-image: linear-gradient(to top right, rgb(9, 51, 0), rgb(9, 55, 16), rgb(9, 58, 33), rgb(8, 62, 49), rgb(8, 65, 65), rgb(8, 69, 81), rgb(8, 72, 98), rgb(8, 76, 114), rgb(8, 79, 130), rgb(7, 83, 146), rgb(7, 86, 163), rgb(7, 90, 179));
+            }
+            100%{
+                background-image: linear-gradient(to top right, rgba(248,26,0,1), rgba(244,129,0,1), rgba(220,244,0,1), rgba(216,244,0,1), rgba(142,244,0,1), rgba(3,244,0,1), rgba(0,244,104,1), rgba(0,244,227,1), rgba(0,171,244,1), rgba(0,52,244,1), rgba(161,0,244,1), rgba(227,0,244,1), rgba(244,0,195,1), rgba(244,0,195,1), rgba(244,0,109,1));
+            }
+        }
+        #textarea:hover{
+            background-image: linear-gradient(to top right, rgb(9, 51, 0), rgb(9, 55, 16), rgb(9, 58, 33), rgb(8, 62, 49), rgb(8, 65, 65), rgb(8, 69, 81), rgb(8, 72, 98), rgb(8, 76, 114), rgb(8, 79, 130), rgb(7, 83, 146), rgb(7, 86, 163), rgb(7, 90, 179));
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div>
+            <h1>Список дел:</h1>
+            <textarea type="text" @keyup.enter="add" v-model='note' cols="35" rows="3" id="textarea"></textarea>
+            <br>
+            <button @click="add" id="push">
+                Добавить
+            </button>
+        </div>
+        <ul>
+            <li v-for='(item, id) in toDo.slice().reverse()' @click='del(id)'>{{item}}<br></li>
+        </ul>
+        <div v-if='deleted' id="footer">
+            <h3>The last removed note: </h3>
+            <p @click='note = deleted; deleted=""'>{{deleted}} 
+            <br>
+            <u @click='deleted=""'>del</u> </p>
+        </div>
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+        const App = {
+            el: '#app',
+            data() {
+                return {
+                    note: '',
+                    toDo: ['погулять с собакой', 'пройти курсы программирования'],
+                    deleted: ''
+                }
+            },
+            methods: {
+                add: function () {
+                    if(this.note[0] === '\n') this.note = '';
+                    if (this.note !== '') {
+                        this.toDo.push(this.note);
+                        this.note = '';
+                        this.save();
+                    }
+                },
+                del: function (item) {
+                    item = this.toDo.length - item - 1
+                    this.deleted = this.toDo[item];
+                    this.toDo.splice(item, 1);
+                    this.save();
+                },
+                save: function () {
+                    localStorage['toDo'] = JSON.stringify(this.toDo)
+                },
+            },
+            mounted() {
+                if (localStorage['toDo'] !== undefined) {
+                    this.toDo = JSON.parse(localStorage['toDo']);
+                }
+            },
+        }
+        Vue.createApp(App).mount('#app')
+    </script>
+</body>
+</html>

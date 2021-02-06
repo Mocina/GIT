@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Укажите зарплату для первого работника: <input type="number" id="one">
+    <br><br>
+    Укажите зарплату для второго работника: <input type="number" id="two">
+    <br><br>
+    Укажите зарплату для третьего работника: <input type="number" id="three">
+    <br><br>
+    <script>
+        function go() {
+            let one = document.querySelector("#one").value;
+            let two = document.querySelector("#two").value;
+            let three = document.querySelector("#three").value;
+
+            let min {
+                "#two" > "#one" < "#three" 
+                "#one" > "#two" < "#three"
+                "#two" > "#three" < "#one"
+            }
+            let max {
+                "#two" < "#one" > "#three" 
+                "#one" < "#two" > "#three"
+                "#two" < "#three" > "#one"
+            }
+        }
+    if(min == "#one"){
+        document.write("Самая минимальная зарплата из 3 работников это у первого рабочего: " + "#one")
+    }
+    if(min == "#two"){
+        document.write("Самая минимальная зарплата из 3 работников это  у второго рабочего: " + "#two")
+    }
+    if(min == "#three"){
+        document.write("Самая минимальная зарплата из 3 работников это у третьего рабочего: " + "#three")
+    }
+    if(max == "#one"){
+        document.write("Самая максимальная зарплата из 3 работников это у первого рабочего: " + "#one")
+    }
+    if(max == "#two"){
+        document.write("Самая максимальная зарплата из 3 работников это у второго рабочего: " + "#two")
+    }
+    if(max == "#three"){
+        document.write("Самая максимальная зарплата из 3 работников это у третьего рабочего: " + "#three")
+    }
+    document.write("#max")
+    document.write("#min")
+    </script>
+    <button onclick="go()"> Посчитать </button>
+    
+</body>
+</html>

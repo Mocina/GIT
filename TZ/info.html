@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html, head, body{
+            background-image: url("CSGO1.jpg");
+        }
+        header nav{
+            display: flex;
+        }
+        #one{
+            background-color: rgba(153, 205, 50, 0.6);
+            padding: 10px;
+            color: white;
+            width: 50%;
+            text-align: center;
+        }
+        #one:hover{
+            transition: 1s;
+            background-color: rgba(0, 255, 157, 0.5);
+            font-size: 1.5em;
+        }
+        #two{
+            background-color: rgba(190, 118, 118, 0.750);
+            padding: 10px;
+            color: white;
+            margin-left: 5px;
+            width: 50%;
+            text-align: center;
+        }
+        #two:hover{
+            transition: 1s;
+            background-color: rgba(0, 255, 157, 0.5);
+            font-size: 1.5em;
+        }
+        main form{
+            display: flex;
+            justify-content: space-around;
+            margin-top: 5px;
+        }
+        #fblock{
+            background-color: rgba(0, 0, 0, 0.9);
+            color: white;
+            width: 50%;
+            min-height: 595px;
+            margin-right: 3px;
+            padding-top: 5px;
+            padding-right: 5px;
+            padding-left: 5px;
+        }
+        #sblock{
+            background-color: rgba(0, 0, 0, 0.9);
+            color: white;
+            width: 50%;
+            min-height: 595px;
+            margin-left: 3px;
+            padding-top: 5px;
+            padding-right: 5px;
+            padding-left: 5px;
+        }
+        #tblock{
+            background-color: rgba(0, 0, 0, 0.9);
+            color: white;
+            text-align: center;
+            padding-bottom: 1px;
+        }
+        footer{
+            background-color: rgba(70, 0, 0, 0.750);
+            color: rgb(255, 255, 255);
+            text-align: center;
+            font-size: 1.5em;
+            margin-top: 5px;
+            padding: 7px;
+            animation: foooter 1s infinite;
+        }
+        a{
+            color: black;
+            text-decoration: none;
+        }
+        #text1{
+            text-align: center;
+            font-size: 1.5em;
+        }
+        #text2{
+            text-align: center;
+            font-size: 1.5em;
+        }
+        #text3{
+            text-align: center;
+            font-size: 1.5em;
+        }
+        #interface{
+            color: rgb(59, 78, 245);
+            text-align: center;
+        }
+        #modes{
+            color: rgb(59, 78, 245);
+            text-align: center;
+        }
+        #i{
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            text-align: center;
+            font-size: 1.2em;
+            padding: 10px;
+            margin-top: 5px;
+        }
+
+        #operation{
+            color: rgb(59, 78, 245);
+            padding-top: 10px;
+        }
+        @keyframes foooter{
+            0%{
+                background-color: #683ab7b4;
+            }
+            100%{
+                background-color: #03a8f4bd;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div id = "one"><a href="index.html">Главная</a></div>
+            <div id = "two"><a href="info.html">Информация</a></div>
+        </nav>
+    </header>
+    <div id="i">
+            Я расскажу вам о интерфейсе, режимах, операции которая действует в данный момент и т.д.
+    </div>
+    <main>
+        <form>
+            <div id="fblock">
+                <h1 id="interface">Интерфейс</h1>
+                <p id="text1">
+                    <img src="interface.jpg" width=600px height=500px><br>
+                    Так выглядит интерфейс в игре на данный момент. В настройках можно изменить цвет показаний здоровья, брони и кол-ва пуль.
+            </p>
+            </div>
+            <div id="sblock">
+                <h1 id="modes">Режимы</h1>
+                <p id="text2">
+                    <img src="menumodes.jpg" width=600px height=500px><br>
+                    Это режимы присутствующие на данный момент. (Соревновательный, напарники, обычный, бой насмерть, военные игры, запретная зона и зачистка.)
+                </p>
+            </div>
+        </form>
+    </main>
+    <div id="tblock">
+        <h1 id="operation">Операция 2020 года,<br>Сломанный клык</h1>
+        <p id="text3">
+            <img src="operation.jpg" width=600px height=500px><br>
+            А это, новая операция действующаяя с 04.12.2020 по 30.04.2021 . 
+        </p>
+    </div>
+    <footer> <li>Сайт защищён 2020</li> </footer>
+</body>
+</html>

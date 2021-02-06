@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css" integrity="sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK" crossorigin="anonymous">
+    <title>Document</title>
+    <style>
+        html, body, head{
+            background-color: rgb(185, 185, 54);
+        }
+        #container1{
+            text-align: center;
+            color: white;
+        }
+        #container2{
+            color: white;
+        }
+        footer{
+            background-color: #343a40;
+            text-align: center;
+            color: white;
+        }
+        footer:hover{
+            animation: 1s foter infinite;
+        }
+        #survey{
+            background-color: rgb(66, 202, 202);
+            text-align: center;
+        }
+        @keyframes foter{
+            0%{
+                background-color: blue;
+                color: red;
+            }
+            100%{
+                background-color: red;
+                color: blue;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container bg-dark p-3" id="container1">
+        <div class="row">
+          <div class="col-sm">
+            Одна из трёх колонок
+          </div>
+          <div class="col-sm">
+            Одна из трёх колонок
+          </div>
+        </div>
+    </div>
+    <div class="container mt-4" id="container2">
+        <div class="row">
+          <div class="col-sm bg-dark p-3 mr-3">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis pariatur molestiae tenetur! Dolorem vel ex distinctio ducimus, quibusdam debitis soluta cupiditate itaque culpa similique. Assumenda architecto corrupti sequi recusandae culpa, nesciunt nihil ipsam illum incidunt sint ab accusantium veritatis necessitatibus sed dolorum dicta, temporibus, eligendi labore distinctio quas dolore aliquam. Soluta corporis iste mollitia pariatur, quis laudantium blanditiis! Quos quae quidem omnis, ea exercitationem quo modi aperiam, incidunt eaque amet cupiditate at, voluptates blanditiis hic nulla ut. Sit maiores modi quaerat totam repudiandae nihil quas, nostrum magnam vel harum quis, laborum velit minima rerum! Suscipit ratione animi vitae vero consequuntur!
+            <br>
+            <div class="btn-group">
+                <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                  Ну то и это :)
+                </button>
+                <ul class="dropdown-menu">
+                  и
+                  в
+                </ul>
+            </div>
+          </div>
+          <div class="col-sm bg-dark p-3">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, modi at hic est praesentium ullam pariatur corrupti non perferendis incidunt esse aspernatur doloribus quam sit quod rem. Harum alias ducimus rerum deleniti laboriosam excepturi! Temporibus sequi, dolores quisquam, id corporis numquam ab recusandae ullam modi, odio accusamus! Autem at provident dicta blanditiis beatae nesciunt laborum. Quod, repellendus voluptatum. Dignissimos eos provident veniam consectetur ex animi quisquam doloremque omnis aliquid recusandae?
+            <main>
+                <button id="survey">Хатите паучивствавать в апрасе?</button><br>
+                <button id="yes"><a id="ayes">Доа</a></button>
+                <button id="no"><a id="ano" onclick="no()">Ниа</a></button>
+            </main>
+            <div class="spinner-border text-danger" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            </div>
+          <div class="col-sm ml-3 bg-dark p-3">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta quos earum quo ea rem tempore laborum modi sequi quae natus, temporibus vel aliquid! Illo fugiat id, minus totam quidem perspiciatis et excepturi, commodi cum similique eveniet ut, necessitatibus asperiores sit soluta at pariatur! Perspiciatis enim animi magni veritatis aspernatur quis mollitia rem dolores quod. Eaque sunt dolore nesciunt, esse commodi voluptatibus? Facere voluptatibus eveniet repellendus ullam, dolores sequi quibusdam debitis, adipisci expedita libero illo ipsam optio eum, maiores officiis rem recusandae tempore? Cupiditate nostrum fugit quisquam architecto distinctio! Veniam modi aperiam nihil obcaecati libero eos quo necessitatibus porro. Iure, laudantium!
+          </div>
+        </div>
+      </div>
+      <script>
+          function no(){
+              document.querySelector("main").hidden="true";
+          }
+      </script>
+      <footer class="mt-4 p-4">
+          <form action="">
+              <li>Защищено 2020</li>
+          </form>
+      </footer>
+</body>
+</html>

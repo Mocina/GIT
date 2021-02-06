@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container {
+            width: 600px;
+            height: 600px;
+            background-color: black;
+        }
+        #insider {
+            width: 20px;
+            height: 20px;
+            background-color: blueviolet;
+            margin-left: 40px;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <br>
+        <div id="insider">
+
+        </div>
+    </div>
+    <p id="text"></p>
+
+    <script>
+        setInterval(() => {
+            document.querySelector("#text").textContent = "Рандомное число: " + random(0, 1000)
+        }, 800);
+        //1) Изменение margin-left и margin-top на рандомное значение. число + 'px'
+        //2) Победа при нажатии
+
+        function random(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+    </script>
+</body>
+</html>

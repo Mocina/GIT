@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let a = prompt("Введите 1 если хотите перевести байты в килобайты, введите 2 если хотите перевести килобайты в байты.");
+        
+        if(a == 1){
+            let b = prompt("Введите число которое хотите перевести из байт в килобайты: ")
+            document.write("Если перевести из байт в килобайты получится: " + round(1024/b))
+        }
+        if(a == 2){
+            let c = prompt("Введите число которое хотите перевести из килобайт в байты: ")
+            document.write("Если перевести из килобайт в байты получится: " + 1024*c)
+        }
+
+    </script>
+</body>
+</html>

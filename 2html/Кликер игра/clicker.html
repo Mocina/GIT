@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button {
+            background-color: rgb(42, 96, 197);
+            font-size: 1.3em;
+            width: 400px;
+            padding: 10px;
+            color: white;
+            border-radius: 10px;
+        }
+        p {
+            font-size: 1.5em;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="doClick()">Клик</button>
+    <p>Клики: <span>0</span></p>
+    <p>Цель: Набрать 2000 очков</p>
+    <button onclick="plusOneClick()">+1 клик (20 кликов)</button><br><br>
+    <button onclick="secondClick()">+1 клик в секунду (100 кликов)</button>
+    <script>
+        let points = 0;
+        let oneClickPlus = 1;
+        let clickSecond = 0;
+        function doClick(){
+            points += oneClickPlus
+            document.querySelector("span").textContent= points
+        }
+        function plusOneClick(){
+            if(points >= 20){
+                points -= 20
+                ++oneClickPlus
+                document.querySelector("span").textContent= points
+            } else{
+                alert("У вас недостаточно очков")
+            }
+        }
+        function secondClick(){
+            if(points >= 100){
+                points -= 100
+                ++clickSecond
+                document.querySelector("span").textContent= points
+            } else{
+                alert("У вас недостаточно очков")
+            }
+        }
+        setInterval(() => {
+            points += clickSecond
+            document.querySelector("span").textContent= points
+        }, 1);
+    </script>
+</body>
+</html>
