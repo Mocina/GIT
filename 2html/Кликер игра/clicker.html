@@ -28,7 +28,7 @@
     <button onclick="secondClick()">+1 клик в секунду (100 кликов)</button>
     <script>
         let points = 0;
-        let oneClickPlus = 1;
+        let oneClickPlus = 21;
         let clickSecond = 0;
         function doClick(){
             points += oneClickPlus
@@ -55,7 +55,7 @@
         setInterval(() => {
             points += clickSecond
             document.querySelector("span").textContent= points
-        }, 1);
+        }, 1000);
     </script>
 </body>
 </html>
