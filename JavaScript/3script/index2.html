@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        #canvas {
+            width: 400px;
+            height: 400px;
+            background-color: rgba(202, 250, 250, 0.712);
+            border: 1px solid rgba(72, 72, 184, 0.657);
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="400" height="400" onclick="backcolor()"></canvas>
+    <hr>
+    <label for="speed">Скорость: </label>
+    <input type="number" id="speed" value="50">
+    <label for="size">Размер: </label>
+    <input type="number" id="size" value="100">
+    <script>
+        function random(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        let inputSpeed = document.querySelector('#speed')
+        let inputSize = document.querySelector('#size')
+        let nameRoutes = ['left', 'right', '', 'up' , 'down']
+        let colors = ["green", "red", "blue", "black", "brown"]
+        let color
+        let canvas = document.querySelector("#canvas");
+        let ctx = canvas.getContext("2d");
+        let w = canvas.width;
+        let h = canvas.height;
+        let x = 0;
+        let y = 0;
+        routeX = 'right';
+        routeY = 'up';
+
+        function step() {
+            let speed = Number(inputSpeed.value)
+            let rectSize = Number(inputSize.value)
+            ctx.clearRect(0, 0, w, h);
+
+            ctx.fillStyle = "green";
+            ctx.fillRect(x, y, rectSize, rectSize);
+
+            if (routeX == 'right') x+= speed
+            if (routeX == 'left') x-= speed
+            if (routeY == 'up') y-= speed
+            if (routeY == 'down') y+= speed
+
+            if (x > w - rectSize) routeX = "left";
+            if (x < 0) routeX = "right";
+            if (y > h- rectSize) routeY = 'up'
+            if (y < 0) routeY = 'down'
+
+            requestAnimationFrame(step);
+        }
+
+        step();
+
+        //function backcolor(){
+        //    document.querySelector("").style.backGroundColor = colors
+        //}
+
+        canvas.addEventListener("click", function (evt) {
+            routeX =  nameRoutes[random(0,2)]
+            routeY =  nameRoutes[random(2,4)]
+            color = colors[random(0,4)]
+            document.querySelector("").style.backgroundColor = color
+            x = evt.clientX,
+            y = evt.clientY
+        }, false);
+    </script>
+</body>
+
+</html>
