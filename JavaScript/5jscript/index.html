@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #canvas {
+            width: 400px;
+            height: 400px;
+            background-color: rgba(202, 250, 250, 0.712);
+            border: 1px solid rgba(72, 72, 184, 0.657);
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="400" height="400"></canvas><br>
+    <script>
+        let canvas = document.querySelector("#canvas");
+        let ctx = canvas.getContext("2d");
+        let w = canvas.width;
+        let h = canvas.height;
+        let kvad = {
+            width: 30,
+            height: 50,
+            color: "blue",
+            x: -100,
+            y: -100,
+        };
+        let krug = {
+            color: "green",
+            size: 10,
+            x: -100,
+            y: -100,
+        };
+        let treu = {
+            color: "black",
+            x: 100,
+            y: 100,
+        };
+        let text = {
+            color: "random!",
+            x: 0,
+            y: 0,
+        };
+
+        function step(){
+            ctx.clearRect(0, 0, w, h)
+            ctx.fillStyle = kvad.color
+            ctx.fillRect(kvad.x, kvad.y, kvad.width, kvad.height)
+
+            ctx.beginPath();
+                ctx.arc(krug.x, krug.y, krug.size, 0, Math.PI * 2)
+                ctx.fillStyle = krug.color
+            
+                ctx.moveTo(treu.x, treu.y);
+                ctx.lineTo(treu.x, 0);
+                ctx.lineTo(125, treu.y);
+                ctx.fillStyle = treu.color
+            ctx.fill();
+
+            requestAnimationFrame(step)
+        }
+        step();
+
+        canvas.addEventListener("mousedown", function (e){
+            console.log(e)
+            if(e.altKey == true){
+                krug.x = e.clientX-9
+                krug.y = e.clientY-9
+            }
+            else if(e.ctrlKey == true){
+                treu.x = e.clientX-9
+                treu.y = e.clientY-9
+            }
+            else{
+                kvad.x = e.clientX-9
+                kvad.y = e.clientY-9
+            } 
+        });
+        document.addEventListener("keydown", function (e) {
+        if (e.code === "Space") {
+          ctx.fillStyle = blue;
+          ctx.fillText("Спасибо что нажали пробел", random(0, 100), random(0, 100));
+        }
+      });
+
+
+
+
+      function random(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+    </script>
+</body>
+</html>
