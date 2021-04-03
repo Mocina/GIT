@@ -36,13 +36,13 @@
         };
         let treu = {
             color: "black",
-            x: 100,
-            y: 100,
+            x: -100,
+            y: -100,
         };
         let text = {
-            color: "random!",
-            x: 0,
-            y: 0,
+            color: "black",
+            x: -100,
+            y: -100,
         };
 
         function step(){
@@ -53,11 +53,18 @@
             ctx.beginPath();
                 ctx.arc(krug.x, krug.y, krug.size, 0, Math.PI * 2)
                 ctx.fillStyle = krug.color
-            
+            ctx.fill();
+
+            ctx.beginPath();
                 ctx.moveTo(treu.x, treu.y);
-                ctx.lineTo(treu.x, 0);
-                ctx.lineTo(125, treu.y);
+                ctx.lineTo(treu.x+50, treu.y+50); 
+                ctx.lineTo(treu.x+50, treu.y);
                 ctx.fillStyle = treu.color
+            ctx.fill();
+
+            ctx.beginPath();
+                ctx.fillStyle = text.color;
+                ctx.fillText("Спасибо, что нажали пробел", text.x, text.y)
             ctx.fill();
 
             requestAnimationFrame(step)
@@ -65,7 +72,7 @@
         step();
 
         canvas.addEventListener("mousedown", function (e){
-            console.log(e)
+            
             if(e.altKey == true){
                 krug.x = e.clientX-9
                 krug.y = e.clientY-9
@@ -80,18 +87,19 @@
             } 
         });
         document.addEventListener("keydown", function (e) {
-        if (e.code === "Space") {
-          ctx.fillStyle = blue;
-          ctx.fillText("Спасибо что нажали пробел", random(0, 100), random(0, 100));
-        }
+            console.log(e)
+            if (e.code === "Space") {
+                ctx.fillStyle = text.color;
+                ctx.fillText("Спасибо, что нажали пробел", random(0, 400), random(0, 400));
+            }
       });
 
 
 
 
-      function random(min, max) {
-        return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
+        function random(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
     </script>
 </body>
 </html>

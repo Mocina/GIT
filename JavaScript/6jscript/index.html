@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        #canvas {
+            width: 400px;
+            height: 400px;
+            background-color: rgb(202, 250, 250);
+            border: 1px solid rgba(72, 72, 184, 0.657);
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="400" height="400"></canvas>
+    <script>
+        let canvas = document.querySelector("#canvas");
+        let ctx = canvas.getContext("2d");
+        let w = canvas.width;
+        let h = canvas.height;
+        let size = 25
+
+        function changeFoodPositon() {
+            food.x = random(0, w/size-1);
+            food.y = random(0, h/size-1);
+        }
+
+        let snake = {
+            x: [],
+            y: [],
+            colorHead: "rgb(202, 250, 204)",
+            colorBody: "yellow",
+            move: 'right',
+        }
+        snake.x[0] = 0
+        snake.y[0] = 0
+
+        let food = {
+            x: '',
+            y: '',
+            color: 'red'
+        }
+        changeFoodPositon()
+        
+
+        function step() {
+            ctx.clearRect(0, 0, w, h)
+            ctx.fillStyle = snake.colorHead
+            ctx.fillRect(snake.x[0] * size, snake.y[0] * size, size, size)
+
+            ctx.fillStyle = snake.colorBody;
+            for(let i=1; i<snake.x.length; i++) {
+                ctx.fillRect(snake.x[i] * size, snake.y[i] * size, size, size)
+            }
+
+            ctx.fillStyle = food.color;
+            ctx.fillRect(food.x*size, food.y*size, size, size)
+
+            if (snake.x[0] === food.x && snake.y[0] === food.y) {
+                snake.x.push(snake.x[0]);
+                snake.y.push(snake.y[0]);
+                changeFoodPositon();
+            }
+
+            for (let i=snake.x.length -1; i>=1; i--) {
+                snake.x[i] = snake.x[i-1];
+                snake.y[i] = snake.y[i-1];
+            }
+
+            if(snake.move === "right") snake.x[0]++
+            if(snake.move === "left") snake.x[0]--
+            if(snake.move === "up") snake.y[0]--
+            if(snake.move === "down") snake.y[0]++
+
+            for (let i = 0; i<=w/size; i++) {
+                ctx.fillRect(i*size, 0, 1, w);
+            }
+            for (let i = 0; i<=h/size; i++) {
+                ctx.fillRect(0, i*size, h, 1);
+            }
+
+            document.addEventListener("keydown", function(e){
+                console.log(e)
+                if(e.code === "KeyW"){
+                    snake.move = "up"
+                }
+                if(e.code === "KeyA"){
+                    snake.move = "left"
+                }
+                if(e.code === "KeyS"){
+                    snake.move = "down"
+                }
+                if(e.code === "KeyD"){
+                    snake.move = "right"
+                }
+            });
+
+
+            setTimeout(() => {
+                requestAnimationFrame(step)
+            }, 200);
+        }
+        step()
+
+        document.addEventListener("keydown", function(e){
+
+        });
+        function random(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+
+
+
+
+
+
+            //for(let i = 0; i<w; i+=25){
+            //    ctx.fillRect(i, 0, size-1, size-1);
+            //    ctx.fillRect(0, i, size-1, size-1);
+            //    for(let j = 0; j<h; j+=25){
+            //        ctx.fillRect(j, 0, size-1, size-1);
+            //        ctx.fillRect(0, j, size-1, size-1);
+            //    }
+            //    
+            //}  
+    </script>
+</body>
+</html>
