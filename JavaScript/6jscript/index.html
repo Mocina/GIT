@@ -82,8 +82,8 @@
             //Голова
             ctx.beginPath();
                 ctx.fillStyle = snake.colorHead
-                ctx.fillRect(snake.x[0] * size, snake.y[0] * size, size, size)
                 //ctx.arc(snake.x[0] * size, snake.y[0] * size, 12, 0, Math.PI * 2)
+                ctx.fillRect(snake.x[0] * size, snake.y[0] * size, size, size)
             ctx.fill();
             
             //Тело
@@ -107,6 +107,7 @@
             }
 
             //Еда
+            ctx.fillStyle = "rgba(255, 255, 255, 0)"
             ctx.drawImage(banana, food.x*size, food.y*size, size, size)
             ctx.fillRect(food.x*size, food.y*size, size, size)
             
@@ -114,7 +115,14 @@
             for(let i = 1; i<=snake.x.length; i++){
                 if(snake.x[0] === snake.x[i] && snake.y[0] === snake.y[i]){
                     ctx.fillStyle = "yellow"
-                    ctx.fillText("YOU DIE", 200, 200)
+                    ctx.fillText("YOU DIE", 175, 192)
+                }
+            }
+
+            //Чтобы еда не появлялась на хвосте
+            for(let i = 1; i<=snake.x.length; i++){
+                if(food.x === snake.x[i] && food.y === snake.y[i]){
+                    changeFoodPositon()
                 }
             }
 
@@ -124,18 +132,13 @@
             if(snake.move === "up") snake.y[0]--
             if(snake.move === "down") snake.y[0]++
 
-            //Чтобы нельзя было поворачивать в противоположную сторону
-            //if(snake.move === "right" && snake.move !== "left")
-            //if(snake.move === "left" && snake.move !== "right")
-            //if(snake.move === "up" && snake.move !== "down")
-            //if(snake.move === "down" && snake.move !== "up")
-
             //Врезание в границу
             if(snake.x[0] === w/size) snake.x[0] = 0
             if(snake.x[0] === -1) snake.x[0] = w/size
             if(snake.y[0] === h/size) snake.y[0] = 0
             if(snake.y[0] === -1) snake.y[0] = h/size
 
+            //При нажатии на кнопку меняется snake.move
             document.addEventListener("keydown", function(e){
                 if(e.code === "KeyW"){
                     snake.move = "up"
@@ -151,21 +154,31 @@
                 }
             });
 
+            //Чтобы нельзя было перемещаться в противоположную сторону
+            document.addEventListener("keydown", function(e){
+                console.log(e)
+                if(e.code === "KeyD" && snake.move !== "left"){
+                    snake.move = "right"
+                } else if(e.code === "KeyA" && snake.move !== "right"){
+                    snake.move = "left"
+                } else if(e.code === "KeyS" && snake.move !== "up"){
+                    snake.move = "down"
+                } else if(e.code === "KeyW" && snake.move !== "down"){
+                    snake.move = "up"
+                }
+            });
 
-            setTimeout(() => {  
+            //Скорость перемещения змейки
+            setTimeout(() => {
                 requestAnimationFrame(step)
             }, 200);
         }
         step()
 
-
-
-
-
+        //Функция для генерации рандома чисел
         function random(min, max){
             return Math.floor(Math.random() * (max - min + 1)) + min;
-        }    
+        }
     </script>
-    <script src="js.js"></script>
 </body>
 </html>
