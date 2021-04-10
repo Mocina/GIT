@@ -55,10 +55,6 @@
         function step() {
             ctx.clearRect(0, 0, w, h)
 
-            //Счёт
-            ctx.fillStyle = "white"
-            ctx.fillText("Счёт: " + score, 26, 35)
-
             //Поле
             for(let i = 0; i<=w/size; i++){
                 ctx.fillStyle = "green"
@@ -111,13 +107,13 @@
             ctx.drawImage(banana, food.x*size, food.y*size, size, size)
             ctx.fillRect(food.x*size, food.y*size, size, size)
             
-            //Появление надписи после смерти
-            for(let i = 1; i<=snake.x.length; i++){
-                if(snake.x[0] === snake.x[i] && snake.y[0] === snake.y[i]){
-                    ctx.fillStyle = "yellow"
-                    ctx.fillText("YOU DIE", 175, 192)
-                }
-            }
+            //СМЭРТЬ                                                             НЕ ПОЛУЧИЛОСЬ
+            //for(let i = 1; i<=snake.x.length; i++){                            НЕ ПОЛУЧИЛОСЬ
+            //    if(snake.x[0] === snake.x[i] && snake.y[0] === snake.y[i]){    НЕ ПОЛУЧИЛОСЬ
+            //        ctx.fillStyle = "yellow"                                   НЕ ПОЛУЧИЛОСЬ
+            //        ctx.fillText("YOU DIE", 175, 192)                          НЕ ПОЛУЧИЛОСЬ
+            //    }                                                              НЕ ПОЛУЧИЛОСЬ
+            //}                                                                  НЕ ПОЛУЧИЛОСЬ
 
             //Чтобы еда не появлялась на хвосте
             for(let i = 1; i<=snake.x.length; i++){
