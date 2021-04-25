@@ -133,22 +133,6 @@
             if(snake.y[0] === h/size) snake.y[0] = 0
             if(snake.y[0] === -1) snake.y[0] = h/size
 
-            //При нажатии на кнопку меняется snake.move
-            document.addEventListener("keydown", function(e){
-                if(e.code === "KeyW"){
-                    snake.move = "up"
-                }
-                if(e.code === "KeyA"){
-                    snake.move = "left"
-                }
-                if(e.code === "KeyS"){
-                    snake.move = "down"
-                }
-                if(e.code === "KeyD"){
-                    snake.move = "right"
-                }
-            });
-
             //Чтобы нельзя было перемещаться в противоположную сторону
             document.addEventListener("keydown", function(e){
                 console.log(e)
@@ -166,7 +150,7 @@
             //Скорость перемещения змейки
             setTimeout(() => {
                 requestAnimationFrame(step)
-            }, 200);
+            }, 100);
         }
         step()
 

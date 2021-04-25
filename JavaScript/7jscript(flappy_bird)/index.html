@@ -61,6 +61,8 @@
         }
         pipe = []
         pipe[0] = new Pipe();
+        pipe[1] = new Pipe();
+        pipe[1].x -= 150
 
         function draw(){
             ctx.clearRect(0, 0, w, h)
@@ -89,16 +91,23 @@
             for(let i = 0; i<pipe.length; i++){
                 ctx.drawImage(pipeUpImage, pipe[i].x, pipe[i].y)
                 ctx.drawImage(pipeBottomImage, pipe[i].x, pipe[i].y + pipeUpImage.height+90)
-                ctx.drawImage(pipeUpImage, pipe[i].x+90, pipe[i].y-40)
-                ctx.drawImage(pipeBottomImage, pipe[i].x+90, pipe[i].y + pipeUpImage.height+90-40)
                 pipe[i].x -= 1
+
+                if(bird.x + birdImage.width >= pipe[i].x && bird.x <= pipe[i].x + pipeUpImage.width){
+                    let q = pipe[i].y + pipeUpImage.height;
+                    console.log (bird.y >= q && bird.y <= q+90)
+                }
+
                 setTimeout(() => {
-                    pipe[i].x -= 2    
+                    pipe[i].x -= 2
                 }, 30000);
-                if(pipe[i].x <= 0-pipeUpImage.width) pipe[i].x = w
+                if(pipe[i].x <= 0-pipeUpImage.width){
+                    pipe[i].x = w
+                    pipe[i].y = Math.floor(Math.random() * (0 - -200 + 1)) + -200
+                } 
 
                 //Смерть при сталкивании с трубами
-                if(bird.x > pipe[i].x && bird.y < pipe[i].y){
+                if(bird.x + birdImage.width >= pipeUpImage.height && bird.y + birdImage.height >= pipeUpImage.height){
                     ctx.fillStyle = "red"
                     ctx.fillText("Конец игры", 110, 256)
                     return
@@ -112,9 +121,10 @@
         }
         fgImage.onload = draw()
 
-        setInterval(() => {
-            bird.y -= 20
-        }, 335);
+        //Подымание птички
+        //setInterval(() => {
+        //    bird.y -= 20
+        //}, 335);
 
         //При клике птичка поднимается на 20 пикселей
         document.addEventListener("click", function(e){
@@ -124,16 +134,10 @@
         //При нажатии определённой кнопки птичка поднимается на 20 пикселей
         document.addEventListener("keydown", function(e){
             //console.log(e)
-            if(e.code === "Space"){
-                bird.y = bird.y-20
-            }
-            if(e.code === "KeyW"){
-                bird.y = bird.y-20
-            }
-            if(e.code === "Enter"){
-                bird.y = bird.y-20
-            }
-            if(e.code === "ArrowUp"){
+            if(e.code === "Space"
+            || e.code === "KeyW"
+            || e.code === "Enter"
+            || e.code === "ArrowUp"){
                 bird.y = bird.y-20
             }
         })
