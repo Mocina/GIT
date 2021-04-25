@@ -1,5 +1,5 @@
 let player = prompt("1 - Ножницы, 2 - Бумага, 3 - Камень")
-let bot = 3
+let bot = random(1, 3)
 document.write("1 - Ножницы, 2 - Бумага, 3 - Камень<br>")
 
 //Пишем для игрока
@@ -57,4 +57,9 @@ if(bot == 3 && player == 2){
 }
 if(bot == 3 && player == 1){
     document.write("Победил Бот.")
+}
+
+
+function random(min, max){
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
