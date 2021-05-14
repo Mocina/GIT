@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google</title>
+    <style>
+        html {
+            height: 100%;
+        }
+        body {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+        #buttons{
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+        }
+        #header{
+            height: 100%;
+            text-align: right;
+            padding: 1%;
+            font-size: 14px;
+        }
+        #Email, #Pictures{
+            text-decoration-line: none;
+            color: black
+        }
+        #Email:hover{
+            text-decoration-line: underline;
+        }
+        #Pictures:hover{
+            text-decoration-line: underline;
+        }
+        #Pictures{
+            padding-left: 1%;
+        }
+        #NineTochek{
+            width: 2%;
+            height: 2%;
+        }
+        #Avatarka{
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+        }
+        #main{
+            text-align: center;
+            font-size: 14px;
+        }
+        #PictureGoogle{
+            width: 20%;
+            height: 10%;
+        }
+        #border{
+            border-radius: 30px;
+            border: 1px solid #aaa;
+            width: 42%;
+            padding: 1%;
+            display: inline-block;
+        }
+        #lupaPicture{
+            width: 3%;
+            height: 3%;
+        }
+        #windowForSearch{
+            background-color: white;
+            width: 90%;
+            height: 1%;
+            border: 0px;
+        }
+        #buttons{
+            text-align: center;
+            display: inline-flex;
+        }
+        #buttonFirst{
+            background-color: lightgrey;
+            color: black;
+            text-decoration: none;
+        }
+        #buttonSecond{
+            background-color: lightgrey;
+            color: black;
+            text-decoration: none;
+        }
+        #videoCall{
+            display: inline-block;
+        }
+        #videoCallPicture{
+            width: 3%;
+            height: 3%;
+        }
+        #videoCallText{
+            text-decoration: none;
+            margin-top: 5%;
+            margin-bottom: 5%;
+        }
+        #videoCallText:hover{
+            text-decoration: underline;
+        }
+        #footer{
+            background-color: rgb(236, 236, 236);
+            color: rgba(0,0,0,.54);
+            font-size: 14px;
+        }
+        #footerUpBlock{
+            border-bottom: 1px solid #dadce0;
+            padding: 2px 30px;
+            width: 100%;
+            font-size: 15px;
+        }
+        #footerDownBlock{
+            text-align: center;
+            padding: 1%;
+        }
+        #listochekPictureText{
+            color: rgba(0,0,0,.54);
+            text-decoration: none;
+            padding-top: 1%;
+            padding-bottom: 1%;
+        }
+        #listochekPictureText:hover{
+            text-decoration: underline;
+        }
+        #footerDownBlockText{
+            
+        }
+        .textLeft{
+            color: rgba(0,0,0,.54);
+            text-decoration: none;
+            text-align: left;
+        }
+        .textLeft:hover{
+            text-decoration: underline;
+        }
+        .textRight{
+            color: rgba(0,0,0,.54);
+            text-decoration: none;
+            text-align: right;
+        }
+        .textRight:hover{
+            text-decoration-line: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div id="header">
+            <a href="https://mail.google.com/mail/u/0/#inbox" id="Email">Почта</a>
+            <a href="https://www.google.ru/imghp?hl=ru&ogbl" id="Pictures">Картинки</a>
+            <img src="Pictures/NineTochek.png" id="NineTochek">
+            <img src="#" id="Avatarka">
+        </div>
+    </header>
+
+    <main>
+        <div id="main">
+            <img src="Pictures/GoogleImage.png" id="PictureGoogle">
+            <br>
+            <div id="border">
+                <img src="Pictures/lupa.png" id="lupaPicture">
+                <input type="text" id="windowForSearch">
+            </div>
+            <br>
+            <div id="buttons">
+                <div id="buttonFirst">
+                    <a href="#">Поиск в Google</a>
+                </div>
+                <div id="buttonSecond">
+                    <a href="https://www.google.com/doodles">Мне повезёт!</a>
+                </div>
+            </div>
+            <br>
+            <div id="videoCall">
+                    <img src="Pictures/callPicture.png" id="videoCallPicture">
+                    <a href="https://duo.google.com/intl/ru/about/?utm_source=google&utm_medium=hpp&utm_campaign=duoapril2021" id="videoCallText">Попробуйте видеозвонки высокого качества в Google Duo</a>
+            </div>
+        </div>
+    </main>
+    
+    <footer id="footer">
+        <div id="footerUpBlock">
+            <p>Россия</p>
+        </div>
+        <div id="footerDownBlock">
+            <img src="Pictures/listochek.png" width="13" height="13">
+            <a href="https://sustainability.google/intl/ru/commitments/?utm_source=googlehpfooter&utm_medium=housepromos&utm_campaign=bottom-footer&utm_content=" id="listochekPictureText">Нулевой баланс выбросов углекислого газа с 2007 года</a>
+            <div id="footerDownBlockText">
+                <div id="textLeft">
+                    <a href="https://about.google/?utm_source=google-RU&utm_medium=referral&utm_campaign=hp-footer&fg=1" class="textLeft">Всё о Google</a>
+                    <a href="https://ads.google.com/intl/ru_ru/home/?subid=ww-ww-et-g-awa-a-g_hpafoot1_1!o2&utm_source=google.com&utm_medium=referral&utm_campaign=google_hpafooter&fg=1" class="textLeft">Реклама</a>
+                    <a href="https://www.google.com/services/?subid=ww-ww-et-g-awa-a-g_hpbfoot1_1!o2&utm_source=google.com&utm_medium=referral&utm_campaign=google_hpbfooter&fg=1#?modal_active=none" class="textLeft">Для бизнеса</a>
+                    <a href="https://www.google.com/search/howsearchworks/?fg=1" class="textLeft">Как работает Google Поиск</a>
+                </div>
+                <div id="textRight">
+                    <a href="https://policies.google.com/privacy?hl=ru&fg=1" class="textRight">Конфиденциальность</a>
+                    <a href="https://policies.google.com/terms?hl=ru&fg=1" class="textRight">Условия</a>
+                    <a href="#" class="textRight">Настройки</a>
+                </div>  
+            </div>
+        </div>
+    </footer>
+    <script src="js.js"></script>
+</body>
+</html>

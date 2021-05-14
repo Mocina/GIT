@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html{
+            text-align: center;
+        }
+        #canvas {
+            width: 45%;
+            height: 130px;
+            background-color: white;
+            border: 1px solid rgba(72, 72, 184, 0.657);
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="45%" height="130"></canvas>
+    <script>
+        let canvas = document.querySelector("#canvas");
+        let ctx = canvas.getContext("2d");
+        const w = canvas.width;
+        const h = canvas.height;
+        pole_w = w
+        pole_h = h
+
+        let birdImage = new Image()
+        birdImage.src = "Pictures/d706e09415d11cced04a.png"
+
+        let dino = {
+            x: 0,
+            y: 100,
+        }
+
+        let cactus = {
+            x: 42,
+        }
+
+        function dinoFunction(){
+            ctx.clearRect(0, 0, w, h)
+
+            // Рисуем задний фон и его передвижение (Временный фон)
+            ctx.drawImage(birdImage, pole_w-w, 0)
+            ctx.drawImage(birdImage, pole_w, 0)
+            pole_w -= 1
+            if(pole_w <= 0) pole_w = w
+
+            // Рисуем динозаврика (Возможно временно не знаю когда сможем скопировать картинку или найти её в инете)
+            ctx.fillStyle = "black"
+            ctx.fillRect(dino.x, dino.y, 2, 30)
+            dino.x++
+
+            // Кактус (Возможно временно не знаю когда сможем скопировать картинку или найти её в инете)
+            ctx.fillStyle = "green"
+            ctx.fillRect(cactus.x, 100, 2, 30)
+
+            // При столкновении с кактусом динозаврик помирает ну или же останавливается канвас
+            if(dino.x == cactus.x)
+
+            // Experiment
+            if(dino.x >= w) dino.x = 0
+
+            // Учим нашего дино прыгать
+            document.addEventListener("keydown", function(e){
+                console.log(e)
+                if(e.code === "KeyW"
+                || e.code === "KeyUp"
+                || e.code === "Space"
+                ){
+                    dino.y -= 20
+                }
+            });
+
+            // Каждый промежуток времени динозаврик будет двигаться вперёд
+            //setTimeout(() => {
+            //    dino.x += 1
+            //}, 1000);
+
+            requestAnimationFrame(dinoFunction())
+        }
+        dinoFunction()
+    </script>
+</body>
+</html>
