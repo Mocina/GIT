@@ -24,11 +24,13 @@
         let ctx = canvas.getContext("2d");
         const w = canvas.width;
         const h = canvas.height;
-        pole_w = w
-        pole_h = h
+        let pole_w = w
+        let pole_h = h
 
-        let birdImage = new Image()
-        birdImage.src = "Pictures/d706e09415d11cced04a.png"
+        let bgImage = new Image()
+        bgImage.src = "Pictures/d706e09415d11cced04a.png"
+        let cactusImage = new Image()
+        cactusImage.src = "Pictures/test.png"
 
         let dino = {
             x: 0,
@@ -36,15 +38,16 @@
         }
 
         let cactus = {
-            x: 42,
+            x: 20,
+            y: 100,
         }
 
         function dinoFunction(){
             ctx.clearRect(0, 0, w, h)
 
             // Рисуем задний фон и его передвижение (Временный фон)
-            ctx.drawImage(birdImage, pole_w-w, 0)
-            ctx.drawImage(birdImage, pole_w, 0)
+            ctx.drawImage(bgImage, pole_w-w, 0)
+            ctx.drawImage(bgImage, pole_w, 0)
             pole_w -= 1
             if(pole_w <= 0) pole_w = w
 
@@ -54,13 +57,11 @@
             dino.x++
 
             // Кактус (Возможно временно не знаю когда сможем скопировать картинку или найти её в инете)
-            ctx.fillStyle = "green"
-            ctx.fillRect(cactus.x, 100, 2, 30)
+            ctx.drawImage(cactusImage, cactus.x, cactus.y)
 
-            // При столкновении с кактусом динозаврик помирает ну или же останавливается канвас
-            if(dino.x == cactus.x)
+            // При столкновении с кактусом динозаврик помирает
+            //if(dino.x == cactus.x && dino.y == cactus.y) return
 
-            // Experiment
             if(dino.x >= w) dino.x = 0
 
             // Учим нашего дино прыгать
@@ -71,16 +72,17 @@
                 || e.code === "Space"
                 ){
                     dino.y -= 20
+                    setTimeout(() => {
+                        dino.y += 20
+                    }, 1000);
                 }
             });
 
-            // Каждый промежуток времени динозаврик будет двигаться вперёд
-            //setTimeout(() => {
-            //    dino.x += 1
-            //}, 1000);
+            // Падание дино если он прыгнул
 
-            requestAnimationFrame(dinoFunction())
+            requestAnimationFrame(dinoFunction)
         }
+        cactusImage.onload = dinoFunction()
         dinoFunction()
     </script>
 </body>

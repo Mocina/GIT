@@ -6,23 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Google</title>
     <style>
-        html {
-            height: 100%;
-        }
-        body {
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-        }
-        #buttons{
-            text-align: center;
-            display: flex;
-            justify-content: center;
-            margin-top: 15px;
-        }
         #header{
-            height: 100%;
             text-align: right;
             padding: 1%;
             font-size: 14px;
@@ -76,7 +60,6 @@
         }
         #buttons{
             text-align: center;
-            display: inline-flex;
         }
         #buttonFirst{
             background-color: lightgrey;
@@ -127,29 +110,44 @@
         #listochekPictureText:hover{
             text-decoration: underline;
         }
-        #footerDownBlockText{
-            
+        #textLeft{
+            text-align: left;
         }
         .textLeft{
             color: rgba(0,0,0,.54);
             text-decoration: none;
-            text-align: left;
         }
         .textLeft:hover{
             text-decoration: underline;
         }
+        #trTextLeft{
+            
+        }
+        .textLeftTable{
+            width: 10%
+        }
+        #textRight{
+            text-align: right;
+        }
         .textRight{
             color: rgba(0,0,0,.54);
             text-decoration: none;
-            text-align: right;
         }
         .textRight:hover{
             text-decoration-line: underline;
         }
+        #trTextRight{
+            
+        }
+        .textRightTable{
+            width: 10%
+        }
+        td{
+            
+        }
     </style>
 </head>
 <body>
-
     <header>
         <div id="header">
             <a href="https://mail.google.com/mail/u/0/#inbox" id="Email">Почта</a>
@@ -158,23 +156,18 @@
             <img src="#" id="Avatarka">
         </div>
     </header>
-
     <main>
         <div id="main">
             <img src="Pictures/GoogleImage.png" id="PictureGoogle">
             <br>
             <div id="border">
                 <img src="Pictures/lupa.png" id="lupaPicture">
-                <input type="text" id="windowForSearch">
+                <img src="Pictures/keyboard.png" onclick="onScreenKeyboard()">
             </div>
             <br>
             <div id="buttons">
-                <div id="buttonFirst">
-                    <a href="#">Поиск в Google</a>
-                </div>
-                <div id="buttonSecond">
-                    <a href="https://www.google.com/doodles">Мне повезёт!</a>
-                </div>
+                <a href="#" id="buttonFirst">Поиск в Google</a>
+                <a href="https://www.google.com/doodles" id="buttonSecond">Мне повезёт!</a>
             </div>
             <br>
             <div id="videoCall">
@@ -183,7 +176,6 @@
             </div>
         </div>
     </main>
-    
     <footer id="footer">
         <div id="footerUpBlock">
             <p>Россия</p>
@@ -192,17 +184,23 @@
             <img src="Pictures/listochek.png" width="13" height="13">
             <a href="https://sustainability.google/intl/ru/commitments/?utm_source=googlehpfooter&utm_medium=housepromos&utm_campaign=bottom-footer&utm_content=" id="listochekPictureText">Нулевой баланс выбросов углекислого газа с 2007 года</a>
             <div id="footerDownBlockText">
-                <div id="textLeft">
-                    <a href="https://about.google/?utm_source=google-RU&utm_medium=referral&utm_campaign=hp-footer&fg=1" class="textLeft">Всё о Google</a>
-                    <a href="https://ads.google.com/intl/ru_ru/home/?subid=ww-ww-et-g-awa-a-g_hpafoot1_1!o2&utm_source=google.com&utm_medium=referral&utm_campaign=google_hpafooter&fg=1" class="textLeft">Реклама</a>
-                    <a href="https://www.google.com/services/?subid=ww-ww-et-g-awa-a-g_hpbfoot1_1!o2&utm_source=google.com&utm_medium=referral&utm_campaign=google_hpbfooter&fg=1#?modal_active=none" class="textLeft">Для бизнеса</a>
-                    <a href="https://www.google.com/search/howsearchworks/?fg=1" class="textLeft">Как работает Google Поиск</a>
-                </div>
-                <div id="textRight">
-                    <a href="https://policies.google.com/privacy?hl=ru&fg=1" class="textRight">Конфиденциальность</a>
-                    <a href="https://policies.google.com/terms?hl=ru&fg=1" class="textRight">Условия</a>
-                    <a href="#" class="textRight">Настройки</a>
-                </div>  
+                <table>
+                    <tr id="trTextLeft">
+                        <div id="textLeft">
+                            <td class="textLeftTable"><a href="https://about.google/?utm_source=google-RU&utm_medium=referral&utm_campaign=hp-footer&fg=1" class="textLeft">Всё о Google</a></td>
+                            <td class="textLeftTable"><a href="https://ads.google.com/intl/ru_ru/home/?subid=ww-ww-et-g-awa-a-g_hpafoot1_1!o2&utm_source=google.com&utm_medium=referral&utm_campaign=google_hpafooter&fg=1" class="textLeft">Реклама</a></td>
+                            <td class="textLeftTable"><a href="https://www.google.com/services/?subid=ww-ww-et-g-awa-a-g_hpbfoot1_1!o2&utm_source=google.com&utm_medium=referral&utm_campaign=google_hpbfooter&fg=1#?modal_active=none" class="textLeft">Для бизнеса</a></td>
+                            <td class="textLeftTable"><a href="https://www.google.com/search/howsearchworks/?fg=1" class="textLeft">Как работает Google Поиск</a></td>
+                        </div>
+                    </tr>
+                    <tr id="trTextRight">
+                        <div id="textRight">
+                            <td class="textRightTable"><a href="https://policies.google.com/privacy?hl=ru&fg=1" class="textRight">Конфиденциальность</a></td>
+                            <td class="textRightTable"><a href="https://policies.google.com/terms?hl=ru&fg=1" class="textRight">Условия</a></td>
+                            <td class="textRightTable"><a href="#" class="textRight">Настройки</a></td>
+                        </div>
+                    </tr>
+                </table>
             </div>
         </div>
     </footer>
