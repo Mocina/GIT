@@ -10,7 +10,7 @@
             text-align: center;
         }
         #canvas {
-            width: 45%;
+            width: 340px;
             height: 130px;
             background-color: white;
             border: 1px solid rgba(72, 72, 184, 0.657);
@@ -18,7 +18,7 @@
     </style>
 </head>
 <body>
-    <canvas id="canvas" width="45%" height="130"></canvas>
+    <canvas id="canvas" width="340" height="130"></canvas>
     <script>
         let canvas = document.querySelector("#canvas");
         let ctx = canvas.getContext("2d");
@@ -31,9 +31,12 @@
         bgImage.src = "Pictures/d706e09415d11cced04a.png"
         let cactusImage = new Image()
         cactusImage.src = "Pictures/test.png"
+        let points = 0;
+        let time = 0;
+        let nowJump = false;
 
         let dino = {
-            x: 0,
+            x: 20,
             y: 100,
         }
 
@@ -45,61 +48,78 @@
         function dinoFunction(){
             ctx.clearRect(0, 0, w, h)
 
+            time++
+            if(time == 5){
+                time = 0
+                points++
+            }
+
+            ctx.fillStyle = "red"
+            ctx.fillText("Очки: " + points, 260, 10)
+
             // Рисуем задний фон и его передвижение (Временный фон)
-            ctx.drawImage(bgImage, pole_w-w, 0)
-            ctx.drawImage(bgImage, pole_w, 0)
-            pole_w -= 1
-            if(pole_w <= 0) pole_w = w
+            //ctx.drawImage(bgImage, pole_w-w, 0)
+            //ctx.drawImage(bgImage, pole_w, 0)
+            //pole_w -= 1
+            //if(pole_w <= 0) pole_w = w
             // Рисуем динозаврика (Возможно временно не знаю когда сможем скопировать картинку или найти её в инете)
             ctx.fillStyle = "black"
-            ctx.fillRect(dino.x, dino.y, 2, 30)
+            ctx.fillRect(dino.x, dino.y, 30, 30)
 
             // Кактус (Возможно временно не знаю когда сможем скопировать картинку или найти её в инете)
             //ctx.drawImage(cactusImage, cactus.x, cactus.y)
             ctx.fillStyle = "green"
-            ctx.fillRect(cactus.x, cactus.y, 2, 30)
+            ctx.fillRect(cactus.x, cactus.y, 30, 30)
 
             // При врезании в стенку кактус будет появляться в конце канваса 
             if(cactus.x <= 0) cactus.x = w
-            cactus.x--
+            cactus.x -= 4
 
             // При столкновении с кактусом динозаврик помирает
             if(dino.x == cactus.x && dino.y == cactus.y){
-                ctx.fillStyle = "red"
-                ctx.fillText("YOU DIE", 2, 60)
+                ctx.fillStyle = "black"
+                ctx.fillText("G A M E  O V E R", 140, 60)
                 return
             }
-
+            if(nowJump == true){
+                dino.y -= 2
+                if(dino.y <= 40){
+                    nowJump = false
+                }
+            }
+            if(nowJump == false){
+                dino.y += 2
+            }
+            
             // Если местоположение по вертикали больше чем 100 пикселей тогда он опустится до 100 пикселей
             if(dino.y > 100) dino.y = 100
-
-            // Учим нашего дино прыгать
-            document.addEventListener("keydown", function(e){
-                console.log(e)
-                if(e.code === "KeyW"
-                || e.code === "KeyUp"
-                || e.code === "Space"
-                ){
-                    dino.y -= 40
-                    if(dino.y < 60){
-                        dino.y = 60
-                        setTimeout(() => {
-                            dino.y += 40
-                        }, 100);
-                    } else{
-                        setTimeout(() => {
-                            dino.y += 40
-                        }, 100);
-                    }
-                }
-            });
-
-            // Падание дино если он прыгнул
 
             requestAnimationFrame(dinoFunction)
         }
         //cactusImage.onload = dinoFunction()
         dinoFunction()
+        
+        document.addEventListener("keydown", function(e){
+                console.log(e)
+                if((e.code === "KeyW"
+                || e.code === "KeyUp"
+                || e.code === "Space")
+                && dino.y == 100
+                ){
+                    nowJump = true
+                    //dino.y -= 40
+                    //if(dino.y < 60){
+                    //    dino.y = 60
+                    //    setTimeout(() => {
+                    //        dino.y += 40
+                    //    }, 200);
+                    //} else{
+                    //    setTimeout(() => {
+                    //        dino.y += 40
+                    //    }, 200);
+                    //}
+                }
+            });
     </script>
 </body>
 </html>
