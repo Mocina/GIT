@@ -49,6 +49,7 @@
         <button onclick="add('=')">=</button>
     </div>
     <script>
+        let inputText = document.querySelector("input").value
         function check(){
             document.querySelector("p").textContent = eval(document.querySelector("input").value);
         }
@@ -61,7 +62,12 @@
             document.querySelector("p").textContent = 0
         }
         function clearLength(){
-            document.querySelector("input").value -= "input".slice(0, -1)
+            for(let i = 0; i < inputText.length; i++){
+                console.log(inputText)
+                if(i == inputText.length){
+
+                }
+            }
         }
     </script>
 </body>

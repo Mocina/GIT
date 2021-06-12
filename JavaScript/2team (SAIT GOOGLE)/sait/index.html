@@ -6,14 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Google</title>
     <style>
+        body, input, button{
+            font-size: 14px;
+            font-family: arial,sans-serif;
+            color: #222;
+        }
+        body{
+            margin: 0;
+        }
         #header{
             text-align: right;
-            padding: 1%;
-            font-size: 14px;
+            width: 99.1%;
+            height: 48px;
+            padding: 6px;
+        }
+        #headerRightBox{
+            display: row;
+            flex: wrap;
         }
         #Email, #Pictures{
             text-decoration-line: none;
-            color: black
+            color: rgba(0,0,0,0.87);
         }
         #Email:hover{
             text-decoration-line: underline;
@@ -25,93 +38,112 @@
             padding-left: 1%;
         }
         #NineTochek{
-            width: 2%;
-            height: 2%;
+            border-radius: 100%;
+            color: #5f6368;
+            width: 24px;
+            height: 24px;
+        }
+        #NineTochek:hover{
+            box-shadow: 0px 0px 0px 10px grey;
         }
         #Avatarka{
-            border-radius: 50%;
+            border-radius: 100%;
             width: 30px;
             height: 30px;
+        }
+        #Avatarka:hover{
+            box-shadow: 0px 0px 0px 10px grey;
         }
         #main{
             text-align: center;
             font-size: 14px;
         }
+        #divGoogle{
+            width: 100%;
+            height: 136px;
+        }
         #PictureGoogle{
-            width: 20%;
-            height: 10%;
+            margin-top: 3.3%;
         }
         #border{
             border-radius: 30px;
             border: 1px solid #aaa;
             width: 42%;
+            height: 20px;
             padding: 1%;
             display: inline-block;
         }
         #lupaPicture{
-            width: 3%;
-            height: 3%;
+            width: 1.4%;
+            height: 1.4%;
         }
         #windowForSearch{
             background-color: white;
-            width: 90%;
-            height: 1%;
-            border: 0px;
+            border-radius: 30px;
+            border: 0;
+            width: 50%;
+            height: 100%;
         }
         #buttons{
             text-align: center;
+            margin-top: 3%;
+            display: block;
         }
         #buttonFirst{
-            background-color: lightgrey;
-            color: black;
+            background-color: #f8f9fa;
+            color: #3c4043;
+            border-radius: 4px;
+            font-family: arial,sans-serif;
+            font-size: 14px;
             text-decoration: none;
+            padding: 1%;
+            padding: 10px;
+        }
+        #buttonFirst:hover{
+            border: 1px solid lightgrey;
         }
         #buttonSecond{
-            background-color: lightgrey;
-            color: black;
+            background-color: #f8f9fa;
+            color: #3c4043;
+            border-radius: 4px;
+            font-family: arial,sans-serif;
+            font-size: 14px;
             text-decoration: none;
+            padding: 1%;
+            padding: 10px;
+            margin-left: 1%;
         }
-        #videoCall{
-            display: inline-block;
-        }
-        #videoCallPicture{
-            width: 3%;
-            height: 3%;
-        }
-        #videoCallText{
-            text-decoration: none;
-            margin-top: 5%;
-            margin-bottom: 5%;
-        }
-        #videoCallText:hover{
-            text-decoration: underline;
+        #buttonSecond:hover{
+            border: 1px solid lightgrey;
         }
         #footer{
-            background-color: rgb(236, 236, 236);
-            color: rgba(0,0,0,.54);
-            font-size: 14px;
+            background-color: rgb(245, 245, 245);
+            color: #70757a;
+            margin-top: 3%;
         }
         #footerUpBlock{
             border-bottom: 1px solid #dadce0;
             padding: 2px 30px;
-            width: 100%;
+            width: 95.5%;
             font-size: 15px;
         }
         #footerDownBlock{
             text-align: center;
             padding: 1%;
         }
+        #footerDownBlockText{
+            display: flex;
+        }
         #listochekPictureText{
             color: rgba(0,0,0,.54);
             text-decoration: none;
-            padding-top: 1%;
-            padding-bottom: 1%;
         }
         #listochekPictureText:hover{
             text-decoration: underline;
         }
         #textLeft{
-            text-align: left;
+            flex-direction: row;
+            justify-content: left;
         }
         .textLeft{
             color: rgba(0,0,0,.54);
@@ -120,14 +152,9 @@
         .textLeft:hover{
             text-decoration: underline;
         }
-        #trTextLeft{
-            
-        }
-        .textLeftTable{
-            width: 10%
-        }
         #textRight{
-            text-align: right;
+            flex-direction: row;
+            justify-content: right;
         }
         .textRight{
             color: rgba(0,0,0,.54);
@@ -136,44 +163,55 @@
         .textRight:hover{
             text-decoration-line: underline;
         }
-        #trTextRight{
-            
-        }
-        .textRightTable{
-            width: 10%
-        }
-        td{
-            
-        }
     </style>
 </head>
 <body>
     <header>
         <div id="header">
-            <a href="https://mail.google.com/mail/u/0/#inbox" id="Email">Почта</a>
-            <a href="https://www.google.ru/imghp?hl=ru&ogbl" id="Pictures">Картинки</a>
-            <img src="Pictures/NineTochek.png" id="NineTochek">
-            <img src="#" id="Avatarka">
+            <div id="headerRightBox">
+                <div>
+                    <div>
+                        <a href="https://mail.google.com/mail/u/0/#inbox" id="Email">Почта</a>
+                    </div>
+                    <div>
+                        <a href="https://www.google.ru/imghp?hl=ru&ogbl" id="Pictures">Картинки</a>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <img src="Pictures/NineTochek2.png" id="NineTochek">
+                    </div>
+                    <div>
+                        <img src="Pictures/black.png" id="Avatarka">
+                    </div>
+                </div>
+            </div>
+
+            <!--
+            <svg>
+                <path id="NineTochek2" d="M6,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM16,6c0,1.1 0.9,2 2,2s2,-0.9 2,-2 -0.9,-2 -2,-2 -2,0.9 -2,2zM12,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2z"></path>
+                «M150 0» — переместись на (150,0);
+                «L75 200» — нарисуй линию к (75,200) от предыдущей точки (которая имела координаты (150,0));
+                «L255 200» — нарисуй линию к (225,200) от предыдущей точки (которая имела координаты (75,200));
+                «Z» — закрой путь (нарисуй линию к начальной точке).
+            </svg>
+            -->
         </div>
     </header>
     <main>
         <div id="main">
-            <img src="Pictures/GoogleImage.png" id="PictureGoogle">
-            <br>
+            <div id="divGoogle">
+                <img src="Pictures/GoogleImage.png" id="PictureGoogle">
+            </div>
             <div id="border">
                 <img src="Pictures/lupa.png" id="lupaPicture">
+                <input type="text" id="windowForSearch">
                 <img src="Pictures/keyboard.png" onclick="onScreenKeyboard()">
             </div>
-            <br>
             <div id="buttons">
-                <a href="#" id="buttonFirst">Поиск в Google</a>
-                <a href="https://www.google.com/doodles" id="buttonSecond">Мне повезёт!</a>
-            </div>
-            <br>
-            <div id="videoCall">
-                    <img src="Pictures/callPicture.png" id="videoCallPicture">
-                    <a href="https://duo.google.com/intl/ru/about/?utm_source=google&utm_medium=hpp&utm_campaign=duoapril2021" id="videoCallText">Попробуйте видеозвонки высокого качества в Google Duo</a>
-            </div>
+                    <a href="#" id="buttonFirst">Поиск в Google</a>
+                    <a href="https://www.google.com/doodles" id="buttonSecond">Мне повезёт!</a>
+                </div>
         </div>
     </main>
     <footer id="footer">
@@ -181,26 +219,19 @@
             <p>Россия</p>
         </div>
         <div id="footerDownBlock">
-            <img src="Pictures/listochek.png" width="13" height="13">
-            <a href="https://sustainability.google/intl/ru/commitments/?utm_source=googlehpfooter&utm_medium=housepromos&utm_campaign=bottom-footer&utm_content=" id="listochekPictureText">Нулевой баланс выбросов углекислого газа с 2007 года</a>
+            <a href="https://sustainability.google/intl/ru/commitments/?utm_source=googlehpfooter&utm_medium=housepromos&utm_campaign=bottom-footer&utm_content=" id="listochekPictureText"><img src="Pictures/listochek.png" width="13" height="13">Нулевой баланс выбросов углекислого газа с 2007 года</a>
             <div id="footerDownBlockText">
-                <table>
-                    <tr id="trTextLeft">
-                        <div id="textLeft">
-                            <td class="textLeftTable"><a href="https://about.google/?utm_source=google-RU&utm_medium=referral&utm_campaign=hp-footer&fg=1" class="textLeft">Всё о Google</a></td>
-                            <td class="textLeftTable"><a href="https://ads.google.com/intl/ru_ru/home/?subid=ww-ww-et-g-awa-a-g_hpafoot1_1!o2&utm_source=google.com&utm_medium=referral&utm_campaign=google_hpafooter&fg=1" class="textLeft">Реклама</a></td>
-                            <td class="textLeftTable"><a href="https://www.google.com/services/?subid=ww-ww-et-g-awa-a-g_hpbfoot1_1!o2&utm_source=google.com&utm_medium=referral&utm_campaign=google_hpbfooter&fg=1#?modal_active=none" class="textLeft">Для бизнеса</a></td>
-                            <td class="textLeftTable"><a href="https://www.google.com/search/howsearchworks/?fg=1" class="textLeft">Как работает Google Поиск</a></td>
-                        </div>
-                    </tr>
-                    <tr id="trTextRight">
-                        <div id="textRight">
-                            <td class="textRightTable"><a href="https://policies.google.com/privacy?hl=ru&fg=1" class="textRight">Конфиденциальность</a></td>
-                            <td class="textRightTable"><a href="https://policies.google.com/terms?hl=ru&fg=1" class="textRight">Условия</a></td>
-                            <td class="textRightTable"><a href="#" class="textRight">Настройки</a></td>
-                        </div>
-                    </tr>
-                </table>
+                <div id="textLeft">
+                    <a href="https://about.google/?utm_source=google-RU&utm_medium=referral&utm_campaign=hp-footer&fg=1" class="textLeft">Всё о Google</a>
+                    <a href="https://ads.google.com/intl/ru_ru/home/?subid=ww-ww-et-g-awa-a-g_hpafoot1_1!o2&utm_source=google.com&utm_medium=referral&utm_campaign=google_hpafooter&fg=1" class="textLeft">Реклама</a>
+                    <a href="https://www.google.com/services/?subid=ww-ww-et-g-awa-a-g_hpbfoot1_1!o2&utm_source=google.com&utm_medium=referral&utm_campaign=google_hpbfooter&fg=1#?modal_active=none" class="textLeft">Для бизнеса</a>
+                    <a href="https://www.google.com/search/howsearchworks/?fg=1" class="textLeft">Как работает Google Поиск</a></td>
+                </div>
+                <div id="textRight">
+                    <a href="https://policies.google.com/privacy?hl=ru&fg=1" class="textRight">Конфиденциальность</a>
+                    <a href="https://policies.google.com/terms?hl=ru&fg=1" class="textRight">Условия</a>
+                    <a href="#" class="textRight">Настройки</a>
+                </div>
             </div>
         </div>
     </footer>

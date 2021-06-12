@@ -38,7 +38,7 @@
         }
 
         let cactus = {
-            x: 20,
+            x: w,
             y: 100,
         }
 
@@ -50,19 +50,28 @@
             ctx.drawImage(bgImage, pole_w, 0)
             pole_w -= 1
             if(pole_w <= 0) pole_w = w
-
             // Рисуем динозаврика (Возможно временно не знаю когда сможем скопировать картинку или найти её в инете)
             ctx.fillStyle = "black"
             ctx.fillRect(dino.x, dino.y, 2, 30)
-            dino.x++
 
             // Кактус (Возможно временно не знаю когда сможем скопировать картинку или найти её в инете)
-            ctx.drawImage(cactusImage, cactus.x, cactus.y)
+            //ctx.drawImage(cactusImage, cactus.x, cactus.y)
+            ctx.fillStyle = "green"
+            ctx.fillRect(cactus.x, cactus.y, 2, 30)
+
+            // При врезании в стенку кактус будет появляться в конце канваса 
+            if(cactus.x <= 0) cactus.x = w
+            cactus.x--
 
             // При столкновении с кактусом динозаврик помирает
-            //if(dino.x == cactus.x && dino.y == cactus.y) return
+            if(dino.x == cactus.x && dino.y == cactus.y){
+                ctx.fillStyle = "red"
+                ctx.fillText("YOU DIE", 2, 60)
+                return
+            }
 
-            if(dino.x >= w) dino.x = 0
+            // Если местоположение по вертикали больше чем 100 пикселей тогда он опустится до 100 пикселей
+            if(dino.y > 100) dino.y = 100
 
             // Учим нашего дино прыгать
             document.addEventListener("keydown", function(e){
@@ -71,10 +80,17 @@
                 || e.code === "KeyUp"
                 || e.code === "Space"
                 ){
-                    dino.y -= 20
-                    setTimeout(() => {
-                        dino.y += 20
-                    }, 1000);
+                    dino.y -= 40
+                    if(dino.y < 60){
+                        dino.y = 60
+                        setTimeout(() => {
+                            dino.y += 40
+                        }, 100);
+                    } else{
+                        setTimeout(() => {
+                            dino.y += 40
+                        }, 100);
+                    }
                 }
             });
 
@@ -82,7 +98,7 @@
 
             requestAnimationFrame(dinoFunction)
         }
-        cactusImage.onload = dinoFunction()
+        //cactusImage.onload = dinoFunction()
         dinoFunction()
     </script>
 </body>

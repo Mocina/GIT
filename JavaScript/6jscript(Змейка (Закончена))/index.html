@@ -106,13 +106,14 @@
             ctx.drawImage(banana, food.x*size, food.y*size, size, size)
             ctx.fillRect(food.x*size, food.y*size, size, size)
             
-            //СМЭРТЬ                                                             НЕ ПОЛУЧИЛОСЬ
-            //for(let i = 1; i<=snake.x.length; i++){                            НЕ ПОЛУЧИЛОСЬ
-            //    if(snake.x[0] === snake.x[i] && snake.y[0] === snake.y[i]){    НЕ ПОЛУЧИЛОСЬ
-            //        ctx.fillStyle = "yellow"                                   НЕ ПОЛУЧИЛОСЬ
-            //        ctx.fillText("YOU DIE", 175, 192)                          НЕ ПОЛУЧИЛОСЬ
-            //    }                                                              НЕ ПОЛУЧИЛОСЬ
-            //}                                                                  НЕ ПОЛУЧИЛОСЬ
+            //СМЭРТЬ
+            for(let i = 2; i<=snake.x.length; i++){
+                if(snake.x[0] === snake.x[i] && snake.y[0] === snake.y[i]){
+                    ctx.fillStyle = "red"
+                    ctx.fillText("YOU DIE", 175, 192)
+                    return
+                }                                                          
+            }                                                              
 
             //Чтобы еда не появлялась на хвосте
             for(let i = 1; i<=snake.x.length; i++){
