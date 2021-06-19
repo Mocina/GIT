@@ -16,15 +16,13 @@
         }
         #header{
             text-align: right;
-            width: 99.1%;
-            height: 48px;
-            padding: 6px;
+            width: 100%;
         }
-        #headerRightBox{
-            display: row;
-            flex: wrap;
+        #Email{
+            text-decoration-line: none;
+            color: rgba(0,0,0,0.87);
         }
-        #Email, #Pictures{
+        #Pictures{
             text-decoration-line: none;
             color: rgba(0,0,0,0.87);
         }
@@ -34,12 +32,10 @@
         #Pictures:hover{
             text-decoration-line: underline;
         }
-        #Pictures{
-            padding-left: 1%;
-        }
         #NineTochek{
             border-radius: 100%;
             color: #5f6368;
+            opacity: 0.6;
             width: 24px;
             height: 24px;
         }
@@ -60,29 +56,34 @@
         }
         #divGoogle{
             width: 100%;
-            height: 136px;
-        }
-        #PictureGoogle{
-            margin-top: 3.3%;
+            height: 100%;
+            margin-top: 5.3%;
         }
         #border{
             border-radius: 30px;
             border: 1px solid #aaa;
             width: 42%;
-            height: 20px;
-            padding: 1%;
+            height: 44px;
+            padding: 0.1%;
             display: inline-block;
+            margin-top: 1.8%;
+        }
+        #divInBorder{
+            margin-top: 0.9%;
         }
         #lupaPicture{
-            width: 1.4%;
-            height: 1.4%;
+            color: #9aa0a6;
+            opacity: 0.4;
+            margin-top: 3px;
+            width: 20px;
+            height: 20px;
         }
         #windowForSearch{
             background-color: white;
             border-radius: 30px;
             border: 0;
-            width: 50%;
-            height: 100%;
+            width: 90%;
+            height: 50%;
         }
         #buttons{
             text-align: center;
@@ -98,6 +99,7 @@
             text-decoration: none;
             padding: 1%;
             padding: 10px;
+            border: 1px solid #f8f9fa;
         }
         #buttonFirst:hover{
             border: 1px solid lightgrey;
@@ -112,6 +114,7 @@
             padding: 1%;
             padding: 10px;
             margin-left: 1%;
+            border: 1px solid #f8f9fa;
         }
         #buttonSecond:hover{
             border: 1px solid lightgrey;
@@ -119,7 +122,7 @@
         #footer{
             background-color: rgb(245, 245, 245);
             color: #70757a;
-            margin-top: 3%;
+            margin-top: 16.7%;
         }
         #footerUpBlock{
             border-bottom: 1px solid #dadce0;
@@ -143,7 +146,6 @@
         }
         #textLeft{
             flex-direction: row;
-            margin-right: 60%;
             justify-content: left;
         }
         .textLeft{
@@ -156,6 +158,7 @@
         #textRight{
             flex-direction: row;
             justify-content: right;
+            margin-left: 60%;
         }
         .textRight{
             color: rgba(0,0,0,.54);
@@ -169,34 +172,25 @@
 <body>
     <header>
         <div id="header">
-            <div id="headerRightBox">
-                <div>
-                    <div>
-                        <a href="https://mail.google.com/mail/u/0/#inbox" id="Email">Почта</a>
-                    </div>
-                    <div>
-                        <a href="https://www.google.ru/imghp?hl=ru&ogbl" id="Pictures">Картинки</a>
-                    </div>
-                </div>
-                <div>
-                    <div>
-                        <img src="Pictures/NineTochek2.png" id="NineTochek">
-                    </div>
-                    <div>
-                        <img src="Pictures/black.png" id="Avatarka">
-                    </div>
-                </div>
-            </div>
-
-            <!--
-            <svg>
+            <a href="https://mail.google.com/mail/u/0/#inbox" id="Email">Почта</a>
+            <a href="https://www.google.ru/imghp?hl=ru&ogbl" id="Pictures">Картинки</a>
+            <svg id="NineTochek">
                 <path id="NineTochek2" d="M6,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM16,6c0,1.1 0.9,2 2,2s2,-0.9 2,-2 -0.9,-2 -2,-2 -2,0.9 -2,2zM12,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2z"></path>
+                <!--
                 «M150 0» — переместись на (150,0);
                 «L75 200» — нарисуй линию к (75,200) от предыдущей точки (которая имела координаты (150,0));
                 «L255 200» — нарисуй линию к (225,200) от предыдущей точки (которая имела координаты (75,200));
                 «Z» — закрой путь (нарисуй линию к начальной точке).
+
+                Переместись на точку ...: M, m
+                Нарисуй линию от пред. точки до ...: L, l, H, h, V, v
+                Нарисуй кубическую кривую от пред. точки до ...: C, c, S, s
+                Нарисуй квадратичную кривую от пред. точки до ...: Q, q, T, t
+                Нарисуй эллиптическую дуговую кривую от пред. точки до ...: A, a
+                Закрой путь и нарисуй линию до начальной точки: Z, z
+                -->
             </svg>
-            -->
+            <img src="Pictures/black.png" id="Avatarka">
         </div>
     </header>
     <main>
@@ -205,14 +199,18 @@
                 <img src="Pictures/GoogleImage.png" id="PictureGoogle">
             </div>
             <div id="border">
-                <img src="Pictures/lupa.png" id="lupaPicture">
-                <input type="text" id="windowForSearch">
-                <img src="Pictures/keyboard.png" onclick="onScreenKeyboard()">
+                <div id="divInBorder">
+                    <svg focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="lupaPicture">
+                        <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                    </svg>
+                    <input type="text" id="windowForSearch">
+                    <img src="Pictures/keyboard.png" onclick="onScreenKeyboard()">
+                </div>
             </div>
             <div id="buttons">
-                    <a href="#" id="buttonFirst">Поиск в Google</a>
-                    <a href="https://www.google.com/doodles" id="buttonSecond">Мне повезёт!</a>
-                </div>
+                <input type="submit" id="buttonFirst" onclick="sendTo()" value="Поиск в Google">
+                <a href="https://www.google.com/doodles" id="buttonSecond">Мне повезёт!</a>
+            </div>
         </div>
     </main>
     <footer id="footer">

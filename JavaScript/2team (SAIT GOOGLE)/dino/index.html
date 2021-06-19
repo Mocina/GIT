@@ -10,15 +10,15 @@
             text-align: center;
         }
         #canvas {
-            width: 340px;
-            height: 130px;
+            width: 670px;
+            height: 150px;
             background-color: white;
             border: 1px solid rgba(72, 72, 184, 0.657);
         }
     </style>
 </head>
 <body>
-    <canvas id="canvas" width="340" height="130"></canvas>
+    <canvas id="canvas" width="670" height="150"></canvas>
     <script>
         let canvas = document.querySelector("#canvas");
         let ctx = canvas.getContext("2d");
@@ -26,24 +26,55 @@
         const h = canvas.height;
         let pole_w = w
         let pole_h = h
+        let pole_w2 = w
+        let pole_h2 = h
 
-        let bgImage = new Image()
-        bgImage.src = "Pictures/d706e09415d11cced04a.png"
+        let dinoImage = new Image()
+        dinoImage.src = "Pictures/dino.png"
+        let dinoDeadImage = new Image()
+        dinoDeadImage.src = "Pictures/dinodead.png"
+        let cactusImages = [
+            "Pictures/cactus1.png", //1
+            "Pictures/cactus2.png", //2
+            "Pictures/cactus3.png", //3
+            "Pictures/cactus4.png", //4
+            "Pictures/cactus5.png", //5
+            "Pictures/cactus6.png", //6
+        ]
+        let cactusImagesSave = cactusImages[random(0, 5)]
         let cactusImage = new Image()
-        cactusImage.src = "Pictures/test.png"
+        cactusImage.src = cactusImagesSave
+        let grassImage = new Image()
+        grassImage.src = "Pictures/grass.png"
+        let cloudImage = new Image()
+        cloudImage.src = "Pictures/cloud.png"
+        let gameOverPicture = new Image()
+        gameOverPicture.src = "Pictures/gameover.png"
         let points = 0;
         let time = 0;
         let nowJump = false;
 
         let dino = {
             x: 20,
-            y: 100,
+            y: 105,
         }
 
         let cactus = {
             x: w,
-            y: 100,
+            y: 105,
         }
+
+        let cloud = {
+            x: w,
+            y: 40
+        }
+
+        //let ypterad = [100, 60]
+        //let pteradacle = {
+        //    x: w,
+        //    y: 60,
+        //}
+        
 
         function dinoFunction(){
             ctx.clearRect(0, 0, w, h)
@@ -57,46 +88,68 @@
             ctx.fillStyle = "red"
             ctx.fillText("Очки: " + points, 260, 10)
 
-            // Рисуем задний фон и его передвижение (Временный фон)
-            //ctx.drawImage(bgImage, pole_w-w, 0)
-            //ctx.drawImage(bgImage, pole_w, 0)
-            //pole_w -= 1
-            //if(pole_w <= 0) pole_w = w
-            // Рисуем динозаврика (Возможно временно не знаю когда сможем скопировать картинку или найти её в инете)
-            ctx.fillStyle = "black"
-            ctx.fillRect(dino.x, dino.y, 30, 30)
+            //if(points == 400){
+            //    ctx.fillStyle = "grey"
+            //    ctx.fillRect(pteradacle.x, pteradacle.y, 30, 15)
+            //    pteradacle.x--
+            //    if(pteradacle.x == dino.x && pteradacle.y == dino.y){
+            //        return
+            //        ctx.fillStyle = "black"
+            //        ctx.fillText("G A M E  O V E R", 140, 60)
+            //    }
+            //}
 
-            // Кактус (Возможно временно не знаю когда сможем скопировать картинку или найти её в инете)
-            //ctx.drawImage(cactusImage, cactus.x, cactus.y)
-            ctx.fillStyle = "green"
-            ctx.fillRect(cactus.x, cactus.y, 30, 30)
+            //Рисуем траву
+            ctx.drawImage(grassImage, pole_w-w, 135, w, 18)
+            ctx.drawImage(grassImage, pole_w, 135, w, 18)
+            
+            //Рисуем облака
+            ctx.drawImage(cloudImage, pole_w2-w, cloud.y)
+            ctx.drawImage(cloudImage, pole_w2, cloud.y)
+
+            //Скорость передвижения облаков
+            pole_w2 -= 1
+            //Скорость передвижения травы
+            pole_w -= 4
+            if(pole_w2 <= 0) pole_w2 = w
+            if(pole_w <= 0) pole_w = w
+
+            if(cloud.x <= w) cloud.y[random(0, 40)]
+
+            // Рисуем кактус
+            ctx.drawImage(cactusImage, cactus.x, cactus.y)
+
+            // Рисуем динозаврика
+            ctx.drawImage(dinoImage, dino.x, dino.y)
 
             // При врезании в стенку кактус будет появляться в конце канваса 
-            if(cactus.x <= 0) cactus.x = w
-            cactus.x -= 4
+            if(cactus.x <= -cactusImage.width) cactus.x = w
+            cactus.x -= 2
 
             // При столкновении с кактусом динозаврик помирает
             if(dino.x == cactus.x && dino.y == cactus.y){
-                ctx.fillStyle = "black"
-                ctx.fillText("G A M E  O V E R", 140, 60)
+                ctx.drawImage(gameOverPicture, 40, 10, w, 10)
+                ctx.drawImage(dinoDeadImage, dino.x, dino.y)   
                 return
             }
+
+            //Прыжок и падение
             if(nowJump == true){
-                dino.y -= 2
+                dino.y -= 3
                 if(dino.y <= 40){
                     nowJump = false
                 }
             }
+            //Если закомментировать можно летать :)
             if(nowJump == false){
                 dino.y += 2
             }
             
             // Если местоположение по вертикали больше чем 100 пикселей тогда он опустится до 100 пикселей
-            if(dino.y > 100) dino.y = 100
+            if(dino.y > 105) dino.y = 105
 
             requestAnimationFrame(dinoFunction)
         }
-        //cactusImage.onload = dinoFunction()
         dinoFunction()
         
         document.addEventListener("keydown", function(e){
@@ -104,22 +157,14 @@
                 if((e.code === "KeyW"
                 || e.code === "KeyUp"
                 || e.code === "Space")
-                && dino.y == 100
+                && dino.y == 105
                 ){
                     nowJump = true
-                    //dino.y -= 40
-                    //if(dino.y < 60){
-                    //    dino.y = 60
-                    //    setTimeout(() => {
-                    //        dino.y += 40
-                    //    }, 200);
-                    //} else{
-                    //    setTimeout(() => {
-                    //        dino.y += 40
-                    //    }, 200);
-                    //}
                 }
             });
+        function random(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
     </script>
 </body>
 </html>
